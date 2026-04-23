@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>手機新機即時比價</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">手機維修與買賣專用</p>
+        <h1>新機價格一眼找出<br>最低價前 5 名</h1>
+        <p class="hero-text">
+          只看有貨商品，直接帶出平台、價格、賣場連結與更新時間。
+          介面放大、按鈕清楚，適合現場快速比價。
+        </p>
+      </div>
+      <div class="hero-panel">
+        <div class="stat-card">
+          <span class="stat-label">目前收錄</span>
+          <strong id="offerCount">0</strong>
+          <span class="stat-hint">筆有貨報價</span>
+        </div>
+        <div class="stat-card accent">
+          <span class="stat-label">預設結果</span>
+          <strong>前 5 名</strong>
+          <span class="stat-hint">按最低價排序</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="content-grid">
+      <aside class="filter-panel">
+        <h2>快速篩選</h2>
+        <label>
+          品牌
+          <select id="brandFilter"></select>
+        </label>
+        <label>
+          型號關鍵字
+          <input id="searchFilter" type="text" placeholder="例如 iPhone 16、S24、Pixel">
+        </label>
+        <label>
+          容量
+          <select id="storageFilter"></select>
+        </label>
+        <label>
+          平台
+          <select id="platformFilter"></select>
+        </label>
+        <label class="checkbox-row">
+          <input id="stockFilter" type="checkbox" checked>
+          只顯示有貨
+        </label>
+        <button id="resetButton" class="ghost-button" type="button">清除篩選</button>
+      </aside>
+
+      <section class="result-panel">
+        <div class="toolbar">
+          <div>
+            <h2>最低價前 5 名</h2>
+            <p id="resultSummary">讀取中...</p>
+          </div>
+          <div class="toolbar-meta">
+            <span class="pill">新機限定</span>
+            <span class="pill success">現貨優先</span>
+          </div>
+        </div>
+
+        <div id="topFiveList" class="card-list"></div>
+
+        <section class="all-results">
+          <div class="toolbar compact">
+            <div>
+              <h2>全部結果</h2>
+              <p>方便交叉比價與查其他平台。</p>
+            </div>
+          </div>
+          <div id="allResultsList" class="table-list"></div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <template id="topCardTemplate">
+    <article class="offer-card">
+      <div class="card-head">
+        <div>
+          <p class="platform"></p>
+          <h3 class="title"></h3>
+        </div>
+        <div class="price-block">
+          <span class="label">最低價</span>
+          <strong class="price"></strong>
+        </div>
+      </div>
+      <div class="card-meta"></div>
+      <div class="card-foot">
+        <span class="updated-at"></span>
+        <a class="link-button" target="_blank" rel="noreferrer">前往賣場</a>
+      </div>
+    </article>
+  </template>
+
+  <template id="rowTemplate">
+    <article class="result-row">
+      <div class="result-main">
+        <h3 class="row-title"></h3>
+        <p class="row-meta"></p>
+      </div>
+      <div class="result-side">
+        <strong class="row-price"></strong>
+        <a class="row-link" target="_blank" rel="noreferrer">查看</a>
+      </div>
+    </article>
+  </template>
+
+  <script src="./app.js" type="module"></script>
+</body>
+</html>

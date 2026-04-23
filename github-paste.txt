@@ -1,0 +1,1 @@
+powershell -ExecutionPolicy Bypass -File "C:\Users\user\Documents\Codex\2026-04-23-new-chat-2\upload-to-github.ps1"

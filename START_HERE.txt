@@ -1,0 +1,16 @@
+最簡單做法
+
+1. 先安裝 Git
+https://git-scm.com/download/win
+
+2. 你的 GitHub repo 已設定好：
+https://github.com/yueh4726-droid/BUYY
+
+3. 安裝完成後，打開 PowerShell，直接貼這一行：
+
+powershell -ExecutionPolicy Bypass -File "C:\Users\user\Documents\Codex\2026-04-23-new-chat-2\upload-to-github.ps1"
+
+4. 如果 GitHub 要你登入，就照畫面登入一次
+
+5. 完成後，程式碼就會上傳到：
+https://github.com/yueh4726-droid/BUYY
