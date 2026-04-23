@@ -1,0 +1,12 @@
+以後更新 GitHub 最簡單的方法
+
+你改完網站內容後，只要在 PowerShell 貼這一行：
+
+powershell -ExecutionPolicy Bypass -File "C:\Users\user\Documents\Codex\2026-04-23-new-chat-2\update-github.ps1"
+
+這樣就會自動：
+- git add .
+- git commit
+- git push
+
+如果沒有新內容，它會提示沒有新 commit。

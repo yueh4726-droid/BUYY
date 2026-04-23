@@ -14,7 +14,7 @@
       "color": "Black",
       "shippingNote": "24h delivery",
       "updatedAt": "2026-04-23 10:30",
-      "url": "https://www.momoshop.com.tw/"
+      "url": "https://www.momoshop.com.tw/search/searchShop.jsp?keyword=iPhone%2016%20128GB"
     },
     {
       "brand": "Apple",
@@ -28,7 +28,7 @@
       "color": "Black",
       "shippingNote": "24h delivery",
       "updatedAt": "2026-04-23 10:27",
-      "url": "https://24h.pchome.com.tw/"
+      "url": "https://24h.pchome.com.tw/search/?q=iPhone%2016%20128GB"
     },
     {
       "brand": "Apple",
@@ -42,7 +42,7 @@
       "color": "Black",
       "shippingNote": "Shopee pickup",
       "updatedAt": "2026-04-23 10:24",
-      "url": "https://shopee.tw/"
+      "url": "https://shopee.tw/search?keyword=iPhone%2016%20128GB"
     },
     {
       "brand": "Samsung",
@@ -56,7 +56,7 @@
       "color": "Silver",
       "shippingNote": "Shopee pickup",
       "updatedAt": "2026-04-23 10:22",
-      "url": "https://shopee.tw/"
+      "url": "https://shopee.tw/search?keyword=Galaxy%20S25%20256GB"
     },
     {
       "brand": "Samsung",
@@ -70,7 +70,7 @@
       "color": "Silver",
       "shippingNote": "Fast delivery",
       "updatedAt": "2026-04-23 10:15",
-      "url": "https://www.momoshop.com.tw/"
+      "url": "https://www.momoshop.com.tw/search/searchShop.jsp?keyword=Galaxy%20S25%20256GB"
     },
     {
       "brand": "Samsung",
@@ -84,7 +84,7 @@
       "color": "Silver",
       "shippingNote": "24h delivery",
       "updatedAt": "2026-04-23 10:18",
-      "url": "https://24h.pchome.com.tw/"
+      "url": "https://24h.pchome.com.tw/search/?q=Galaxy%20S25%20256GB"
     },
     {
       "brand": "Google",
@@ -98,7 +98,7 @@
       "color": "White",
       "shippingNote": "Home delivery",
       "updatedAt": "2026-04-23 10:12",
-      "url": "https://www.momoshop.com.tw/"
+      "url": "https://www.momoshop.com.tw/search/searchShop.jsp?keyword=Pixel%2010%20128GB"
     },
     {
       "brand": "Google",
@@ -112,7 +112,7 @@
       "color": "White",
       "shippingNote": "Shopee pickup",
       "updatedAt": "2026-04-23 10:08",
-      "url": "https://shopee.tw/"
+      "url": "https://shopee.tw/search?keyword=Pixel%2010%20128GB"
     },
     {
       "brand": "Xiaomi",
@@ -126,7 +126,7 @@
       "color": "Blue",
       "shippingNote": "Shopee pickup",
       "updatedAt": "2026-04-23 10:21",
-      "url": "https://shopee.tw/"
+      "url": "https://shopee.tw/search?keyword=14T%20Pro%20512GB"
     },
     {
       "brand": "Xiaomi",
@@ -140,7 +140,7 @@
       "color": "Blue",
       "shippingNote": "24h delivery",
       "updatedAt": "2026-04-23 10:09",
-      "url": "https://24h.pchome.com.tw/"
+      "url": "https://24h.pchome.com.tw/search/?q=14T%20Pro%20512GB"
     },
     {
       "brand": "Apple",
@@ -154,7 +154,7 @@
       "color": "Desert",
       "shippingNote": "Restocking",
       "updatedAt": "2026-04-23 10:03",
-      "url": "https://shopee.tw/"
+      "url": "https://shopee.tw/search?keyword=iPhone%2016%20Pro%20256GB"
     }
   ]
 }

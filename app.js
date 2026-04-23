@@ -32,10 +32,7 @@ async function bootstrap() {
   state.meta.source = payload.source ?? "unknown";
   state.meta.updatedAt = payload.updatedAt ?? "";
 
-  offerCount.textContent = state.offers
-    .filter((item) => item.inStock)
-    .length
-    .toLocaleString("zh-TW");
+  offerCount.textContent = state.offers.filter((item) => item.inStock).length.toLocaleString("zh-TW");
 
   hydrateFilterOptions();
   bindEvents();
@@ -54,11 +51,11 @@ async function loadOffers() {
 
       return await response.json();
     } catch (error) {
-      console.warn(`無法載入 ${url}`, error);
+      console.warn(`Failed to load ${url}`, error);
     }
   }
 
-  throw new Error("找不到可用的報價資料來源");
+  throw new Error("No offer source available");
 }
 
 function hydrateFilterOptions() {
@@ -118,7 +115,7 @@ function updateFilter(key, value) {
 function render() {
   const filtered = getFilteredOffers();
   const topFive = filtered.slice(0, 5);
-  const sourceLabel = state.meta.source === "live-api" ? "即時 API" : "示範資料";
+  const sourceLabel = state.meta.source === "live-api" ? "即時資料" : "示範資料";
   const updatedLabel = state.meta.updatedAt ? `，最後更新 ${state.meta.updatedAt}` : "";
 
   resultSummary.textContent = `共找到 ${filtered.length} 筆符合條件的報價，依價格由低到高排序。資料來源：${sourceLabel}${updatedLabel}`;
@@ -158,12 +155,13 @@ function renderTopCards(items) {
     fragment.querySelector(".price").textContent = formatPrice(item.price);
     fragment.querySelector(".card-meta").textContent =
       `${item.condition}｜${item.color}｜${item.sellerName}｜${item.shippingNote}`;
-    fragment.querySelector(".updated-at").textContent = `更新時間：${item.updatedAt}`;
+    fragment.querySelector(".updated-at").textContent =
+      `${item.urlType === "product" ? "商品頁" : "搜尋結果"}｜更新時間：${item.updatedAt}`;
 
     const button = fragment.querySelector(".link-button");
     button.href = item.url;
-    button.textContent = item.inStock ? "前往賣場" : "目前缺貨";
-    button.setAttribute("aria-label", `前往 ${item.platform} 賣場`);
+    button.textContent = item.urlType === "product" ? "前往商品頁" : "前往搜尋結果";
+    button.setAttribute("aria-label", `${item.platform} 連結`);
 
     topFiveList.appendChild(fragment);
   });
@@ -181,12 +179,12 @@ function renderAllResults(items) {
     const fragment = rowTemplate.content.cloneNode(true);
     fragment.querySelector(".row-title").textContent = `${item.brand} ${item.model} ${item.storage}`;
     fragment.querySelector(".row-meta").textContent =
-      `${item.platform}｜${item.condition}｜${item.color}｜${item.sellerName}｜${item.inStock ? "有貨" : "缺貨"}｜更新 ${item.updatedAt}`;
+      `${item.platform}｜${item.condition}｜${item.color}｜${item.sellerName}｜${item.inStock ? "有貨" : "缺貨"}｜${item.urlType === "product" ? "商品頁" : "搜尋結果"}｜更新 ${item.updatedAt}`;
     fragment.querySelector(".row-price").textContent = formatPrice(item.price);
 
     const link = fragment.querySelector(".row-link");
     link.href = item.url;
-    link.textContent = "查看";
+    link.textContent = item.urlType === "product" ? "商品頁" : "搜尋";
 
     allResultsList.appendChild(fragment);
   });
@@ -209,6 +207,6 @@ function formatPrice(price) {
 
 bootstrap().catch((error) => {
   console.error(error);
-  resultSummary.textContent = "資料載入失敗，請先啟動後端伺服器或使用本機伺服器開啟網站。";
-  topFiveList.appendChild(createEmptyState("目前無法讀取資料檔，請確認網站與 API 是否有正常啟動。"));
+  resultSummary.textContent = "資料載入失敗，請先啟動後端伺服器或重新整理頁面。";
+  topFiveList.appendChild(createEmptyState("目前無法讀取資料，請確認 API 或本機資料是否正常。"));
 });

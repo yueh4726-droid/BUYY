@@ -1,4 +1,5 @@
 import { sourceConfigs, siteOptions } from "../config.mjs";
+import { enrichOfferLink } from "../link-utils.mjs";
 import { filterInvalidOffers, formatTimestamp, normalizeOffer, sortOffers } from "../normalizers.mjs";
 import { loadDemoOffers } from "../sources/demo-source.mjs";
 import { sourceHandlers } from "../sources/registry.mjs";
@@ -22,7 +23,7 @@ export async function loadLatestOffers({ keyword, limit = 100, onlyInStock = tru
     ? {
         source: "live-api",
         updatedAt: formatTimestamp(),
-        offers: sortOffers(filterInvalidOffers(liveOffers)).map(normalizeOffer),
+        offers: sortOffers(filterInvalidOffers(liveOffers)).map(normalizeOffer).map(enrichOfferLink),
       }
     : await loadDemoOffers(normalizedKeyword);
 

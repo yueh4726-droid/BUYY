@@ -4,39 +4,46 @@ $projectPath = "C:\Users\user\Documents\Codex\2026-04-23-new-chat-2"
 $repoUrl = "https://github.com/yueh4726-droid/BUYY.git"
 $gitUserName = "yueh4726-droid"
 $gitUserEmail = "yueh4726@gmail.com"
+$gitExe = "C:\Program Files\Git\cmd\git.exe"
+
+if (-not (Test-Path $gitExe)) {
+  throw "Git not found at C:\Program Files\Git\cmd\git.exe"
+}
 
 Set-Location $projectPath
 
-git --version | Out-Null
-
-git config --global user.name $gitUserName
-git config --global user.email $gitUserEmail
+& $gitExe config --global user.name $gitUserName
+& $gitExe config --global user.email $gitUserEmail
 
 if (-not (Test-Path ".git")) {
-  git init
+  & $gitExe init
+  if ($LASTEXITCODE -ne 0) { throw "git init failed" }
 }
 
-git branch -M main
-git add .
+& $gitExe branch -M main
+if ($LASTEXITCODE -ne 0) { throw "git branch failed" }
 
-git commit -m "Initial website upload"
+& $gitExe add .
+if ($LASTEXITCODE -ne 0) { throw "git add failed" }
+
+& $gitExe commit -m "Initial website upload"
 if ($LASTEXITCODE -ne 0) {
   Write-Host "No new commit was created. Continue to push."
 }
 
-$hasOrigin = $false
-git remote get-url origin | Out-Null
+& $gitExe remote get-url origin | Out-Null
 if ($LASTEXITCODE -eq 0) {
-  $hasOrigin = $true
-}
-
-if ($hasOrigin) {
-  git remote set-url origin $repoUrl
+  & $gitExe remote set-url origin $repoUrl
+  if ($LASTEXITCODE -ne 0) { throw "git remote set-url failed" }
 } else {
-  git remote add origin $repoUrl
+  & $gitExe remote add origin $repoUrl
+  if ($LASTEXITCODE -ne 0) { throw "git remote add failed" }
 }
 
-git push -u origin main
+& $gitExe push -u origin main
+if ($LASTEXITCODE -ne 0) {
+  throw "git push failed"
+}
 
 Write-Host ""
 Write-Host "Done. GitHub upload finished."

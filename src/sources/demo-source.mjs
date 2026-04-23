@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
+import { enrichOfferLink } from "../link-utils.mjs";
 
 const dataPath = fileURLToPath(new URL("../../data/offers.json", import.meta.url));
 
@@ -11,7 +12,7 @@ export async function loadDemoOffers(keyword = "") {
   const offers = payload.offers.filter((item) => {
     if (!normalizedKeyword) return true;
     return `${item.brand} ${item.model} ${item.storage}`.toLowerCase().includes(normalizedKeyword);
-  });
+  }).map(enrichOfferLink);
 
   return {
     source: "demo-seed",
